@@ -1,3 +1,6 @@
-<p>
-  counter works!
-</p>
+<app-value [value]="firstValue$ | async"></app-value>
+<app-value [value]="secondValue$ | async"></app-value>
+
+<button (click)="handleStartClick()">Start</button>
+<button (click)="handleStopClick()">Stop</button>
+

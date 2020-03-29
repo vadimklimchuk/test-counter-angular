@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ValueComponent } from './components/value/value.component';
 
@@ -7,8 +6,6 @@ import { ValueComponent } from './components/value/value.component';
   declarations: [
     ValueComponent
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [ ]
 })
 export class SharedModule { }

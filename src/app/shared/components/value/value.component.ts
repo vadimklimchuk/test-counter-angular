@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-value',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./value.component.scss']
 })
 export class ValueComponent implements OnInit {
+
+  @Input() public value: number;
 
   constructor() { }
 
