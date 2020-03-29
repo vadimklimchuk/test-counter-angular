@@ -1,6 +1,11 @@
-<app-value [value]="firstValue$ | async"></app-value>
-<app-value [value]="secondValue$ | async"></app-value>
+<div class="values">
+    <app-value [value]="firstValue$ | async"></app-value>
+    <app-value [value]="secondValue$ | async"></app-value>
+</div>
 
-<button (click)="handleStartClick()">Start</button>
-<button (click)="handleStopClick()">Stop</button>
+<div class="buttons">
+    <button [disabled]="!isEnabledStart" (click)="handleStartClick()">Start</button>
+    <button [disabled]="isEnabledStart" (click)="handleStopClick()">Stop</button>
+    <button [disabled]="!isEnabledStart" (click)="handleResetClick()">Reset</button>
+</div>
 

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Observable, interval, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { CountState, initialState } from 'src/app/store/reducers/counter.reducer';
-import { selectFirstValue, selectSecondValue } from 'src/app/store/selector/counter.selector';
-import { ChangeAction } from 'src/app/store/actions/counter.actions';
+import { Observable, interval, Subscription } from 'rxjs';
+
 import { BaseClass } from 'src/app/shared/base/base.class';
-import { map } from 'rxjs/operators';
+import { CountState } from 'src/app/store/reducers/counter.reducer';
+import { ChangeAction, ResetAction } from 'src/app/store/actions/counter.actions';
+import { selectFirstValue, selectSecondValue } from 'src/app/store/selector/counter.selector';
 
 
 @Component({
@@ -14,11 +14,11 @@ import { map } from 'rxjs/operators';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent extends BaseClass implements OnInit {
+export class CounterComponent extends BaseClass {
   public firstValue$: Observable<number> = this.store$.pipe(select(selectFirstValue));
   public secondValue$: Observable<number> = this.store$.pipe(select(selectSecondValue));
 
-  public isDisable$: Observable<boolean> = this.store$.pipe(map(counter => counter === initialState));
+  public isEnabledStart: boolean = true;
 
   public intervalSubscription: Subscription;
 
@@ -26,20 +26,26 @@ export class CounterComponent extends BaseClass implements OnInit {
 
   constructor(private store$: Store<CountState>) { super(); }
 
-  ngOnInit() {
-  }
+  public handleStartClick(): void {
+    this.intervalSubscription = interval(1000)
+      .subscribe(() => {
+        this.store$.dispatch(new ChangeAction());
 
-  public handleStartClick() {
-    console.log(this.intervalSubscription);
-    this.intervalSubscription = interval(1000).subscribe(() => {
-      this.store$.dispatch(new ChangeAction());
-    });
+        this.isEnabledStart = false;
+      });
 
     this.subscribe(this.intervalSubscription);
   }
 
-  public handleStopClick() {
+  public handleStopClick(): void {
+    this.isEnabledStart = true;
     this.unsubscribe();
   }
 
+  public handleResetClick(): void {
+    this.isEnabledStart = true;
+    this.unsubscribe();
+
+    this.store$.dispatch(new ResetAction());
+  }
 }

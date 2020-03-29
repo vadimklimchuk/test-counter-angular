@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { ValueComponent } from './components/value/value.component';
+import { HighlightValueDirective } from './directives/highlight-value.directive';
 
 @NgModule({
   declarations: [
-    ValueComponent
+    ValueComponent,
+    HighlightValueDirective
   ],
-  imports: [ ]
+  imports: [ ],
+  exports: [
+    ValueComponent
+  ]
 })
 export class SharedModule { }

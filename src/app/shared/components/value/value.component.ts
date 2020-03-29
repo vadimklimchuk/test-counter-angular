@@ -1,17 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-value',
   templateUrl: './value.component.html',
   styleUrls: ['./value.component.scss']
 })
-export class ValueComponent implements OnInit {
-
+export class ValueComponent {
   @Input() public value: number;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

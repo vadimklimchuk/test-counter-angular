@@ -1,0 +1,41 @@
+@import '../../../assets/scss/mixins.scss';
+@import '../../../assets/scss/colors.scss';
+
+.values {
+    @include flex(center, center);
+
+    margin-top: 30px;
+}
+
+.buttons {
+    @include flex(center, center);
+
+    margin-top: 30px;
+
+    button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        margin-left: 10px;
+        background: $blue;
+        color: $white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+    
+        &:hover {
+            background: transparent;
+            color: $blue;
+            border: 1px solid $blue;
+        }
+    
+        &:first-child {
+            margin-left: 0;
+        }
+    
+        &:disabled {
+            opacity: 0.6;
+        }
+    }
+}
