@@ -4,8 +4,8 @@
 </div>
 
 <div class="buttons">
-    <button [disabled]="!isEnabledStart" (click)="handleStartClick()">Start</button>
-    <button [disabled]="isEnabledStart" (click)="handleStopClick()">Stop</button>
-    <button [disabled]="!isEnabledStart" (click)="handleResetClick()">Reset</button>
+    <button (click)="handleStartClick()">Start</button>
+    <button (click)="handleStopClick()">Stop</button>
+    <button (click)="handleResetClick()">Reset</button>
 </div>
 
