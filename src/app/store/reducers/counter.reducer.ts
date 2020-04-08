@@ -1,7 +1,4 @@
-import { Action } from '@ngrx/store';
-
 import { CounterActionType, CounterActions } from '../actions/counter.actions';
-// import { CounterState, initialValue } from '../state/counter.state';
 
 export const coundNode = 'counter';
 
